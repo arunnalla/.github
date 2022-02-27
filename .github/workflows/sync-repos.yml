@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+    secrets:
+      gitlabToken:
+        required: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Sync Repos
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wangchucheng/git-repo-sync@v0.1.0
+        with:
+          target-url: ${{ format('https://gitlab.com/arunnalla/{0}.git', inputs.name) }}
+          target-username: arunnalla
+          target-token: ${{ secrets.gitlabToken }}
