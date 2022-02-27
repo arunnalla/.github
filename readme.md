@@ -2,4 +2,4 @@
   <h2>.github</h2>
 </div>
 
-Reusable github workflows.
+Reusable GitHub workflows.
